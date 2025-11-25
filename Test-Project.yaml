@@ -1,17 +1,8 @@
 ---
 - name: Test verbinding met ESXI
   hosts: all
-  gather_facts: no
+  gather_facts: yes
 
   tasks:
-    - name: Test login via VMware API
-      community.vmware.vmware_host_facts:
-        hostname: "{{ vmware_host }}"
-        username: "{{ vmware_user }}"
-        password: "{{ vmware_password }}"
-        validate_certs: false
-      register: result
-
-    - name: Toon output
-      debug:
-        var: result
+    - name: Test connectivity
+      ping:
